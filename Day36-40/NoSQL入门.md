@@ -304,23 +304,48 @@ MongoDB将数据存储为一个文档，一个文档由一系列的“键值对�
 可以从MongoDB的[官方下载链接](https://www.mongodb.com/download-center#community)下载MongoDB，官方为Windows系统提供了一个Installer程序，而Linux和MacOS则提供了压缩文件。下面简单说一下Linux系统如何安装和配置MongoDB。
 
 ```Shell
-wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-amazon-3.6.5.tgz
-gunzip mongodb-linux-x86_64-amazon-3.6.5.tgz
-mkdir mongodb-3.6.5
-tar -xvf mongodb-linux-x86_64-amazon-3.6.5.tar --strip-components 1 -C mongodb-3.6.5/
-export PATH=$PATH:~/mongodb-3.6.5/bin
+wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-amazon-4.0.9.tgz
+gunzip mongodb-linux-x86_64-amazon-4.0.9.tgz
+mkdir mongodb-4.0.9
+tar -xvf mongodb-linux-x86_64-amazon-4.0.9.tar --strip-components 1 -C mongodb-4.0.9/
+export PATH=$PATH:~/mongodb-4.0.9/bin
 mkdir -p /data/db
-mongod --bind_ip 172.18.61.250
+mongod --bind_ip 127.0.0.1
 
-2018-06-03T18:03:28.232+0800 I CONTROL  [initandlisten] MongoDB starting : pid=1163 port=27017 dbpath=/data/db 64-bit host=iZwz97tbgo9lkabnat2lo8Z
-2018-06-03T18:03:28.232+0800 I CONTROL  [initandlisten] db version v3.6.5
-2018-06-03T18:03:28.232+0800 I CONTROL  [initandlisten] git version: a20ecd3e3a174162052ff99913bc2ca9a839d618
-2018-06-03T18:03:28.232+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.0-fips29 Mar 2010
-...
-2018-06-03T18:03:28.945+0800 I NETWORK  [initandlisten] waiting for connections on port 27017
+2019-05-13T09:43:49.161+0800 I CONTROL  [main] Automatically disabling TLS 1.0, to force-enable TLS 1.0 specify --sslDisabledProtocols 'none'
+2019-05-13T09:43:49.178+0800 I CONTROL  [initandlisten] MongoDB starting : pid=17858 port=27017 dbpath=/data/db 64-bit host=erlebnis-VirtualBox
+2019-05-13T09:43:49.178+0800 I CONTROL  [initandlisten] db version v4.0.9
+2019-05-13T09:43:49.178+0800 I CONTROL  [initandlisten] git version: fc525e2d9b0e4bceff5c2201457e564362909765
+2019-05-13T09:43:49.178+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2g  1 Mar 2016
+2019-05-13T09:43:49.178+0800 I CONTROL  [initandlisten] allocator: tcmalloc
+2019-05-13T09:43:49.178+0800 I CONTROL  [initandlisten] modules: none
+2019-05-13T09:43:49.178+0800 I CONTROL  [initandlisten] build environment:
+2019-05-13T09:43:49.178+0800 I CONTROL  [initandlisten]     distmod: ubuntu1604
+2019-05-13T09:43:49.178+0800 I CONTROL  [initandlisten]     distarch: x86_64
+2019-05-13T09:43:49.178+0800 I CONTROL  [initandlisten]     target_arch: x86_64
+2019-05-13T09:43:49.178+0800 I CONTROL  [initandlisten] options: { net: { bindIp: "127.0.0.1" } }
+2019-05-13T09:43:49.178+0800 I STORAGE  [initandlisten] Detected data files in /data/db created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2019-05-13T09:43:49.179+0800 I STORAGE  [initandlisten] 
+2019-05-13T09:43:49.179+0800 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2019-05-13T09:43:49.179+0800 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2019-05-13T09:43:49.179+0800 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=3476M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),statistics_log=(wait=0),verbose=(recovery_progress),
+2019-05-13T09:43:50.547+0800 I STORAGE  [initandlisten] WiredTiger message [1557711830:547806][17858:0x7fb850e07a80], txn-recover: Main recovery loop: starting at 1/20992 to 2/256
+2019-05-13T09:43:50.699+0800 I STORAGE  [initandlisten] WiredTiger message [1557711830:699509][17858:0x7fb850e07a80], txn-recover: Recovering log 1 through 2
+2019-05-13T09:43:50.825+0800 I STORAGE  [initandlisten] WiredTiger message [1557711830:825401][17858:0x7fb850e07a80], txn-recover: Recovering log 2 through 2
+2019-05-13T09:43:50.917+0800 I STORAGE  [initandlisten] WiredTiger message [1557711830:917288][17858:0x7fb850e07a80], txn-recover: Set global recovery timestamp: 0
+2019-05-13T09:43:50.931+0800 I RECOVERY [initandlisten] WiredTiger recoveryTimestamp. Ts: Timestamp(0, 0)
+2019-05-13T09:43:50.997+0800 I CONTROL  [initandlisten] 
+2019-05-13T09:43:50.997+0800 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2019-05-13T09:43:50.997+0800 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2019-05-13T09:43:50.997+0800 I CONTROL  [initandlisten] ** WARNING: You are running this process as the root user, which is not recommended.
+2019-05-13T09:43:50.997+0800 I CONTROL  [initandlisten] 
+2019-05-13T09:43:51.020+0800 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/data/db/diagnostic.data'
+2019-05-13T09:43:51.020+0800 I NETWORK  [initandlisten] waiting for connections on port 27017
 ```
 
 > 说明：上面的操作中，export命令是设置PATH环境变量，这样可以在任意路径下执行mongod来启动MongoDB服务器。MongoDB默认保存数据的路径是/data/db目录，为此要提前创建该目录。此外，在使用mongod启动MongoDB服务器时，--bind_ip参数用来将服务绑定到指定的IP地址，也可以用--port参数来指定端口，默认端口为27017。
+
+> 根据[安装完MongoDB后尝试mongod -dbpath命令为什么会一直卡在连接端口？](https://cnodejs.org/topic/58e0a8ab6c1696ed2dc52da3)：到了`waiting for connections on port 27017`这一步实际上就代表mongodb已经启动，现在可以开启另外一个terminal来进行连线。
 
 #### MongoDB基本概念
 
@@ -341,12 +366,38 @@ mongod --bind_ip 172.18.61.250
 启动服务器后可以使用交互式环境跟服务器通信，如下所示。
 
 ```shell
-mongo --host 172.18.61.250
+MongoDB shell version v4.0.9
+connecting to: mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("17a0e700-6b4c-4ca9-b2e8-3eda6b1f7715") }
+MongoDB server version: 4.0.9
+Welcome to the MongoDB shell.
+For interactive help, type "help".
+For more comprehensive documentation, see
+	http://docs.mongodb.org/
+Questions? Try the support group
+	http://groups.google.com/group/mongodb-user
+Server has startup warnings: 
+2019-05-13T09:43:49.179+0800 I STORAGE  [initandlisten] 
+2019-05-13T09:43:49.179+0800 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2019-05-13T09:43:49.179+0800 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2019-05-13T09:43:50.997+0800 I CONTROL  [initandlisten] 
+2019-05-13T09:43:50.997+0800 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2019-05-13T09:43:50.997+0800 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2019-05-13T09:43:50.997+0800 I CONTROL  [initandlisten] ** WARNING: You are running this process as the root user, which is not recommended.
+2019-05-13T09:43:50.997+0800 I CONTROL  [initandlisten] 
+---
+Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+metrics about your deployment (disk utilization, CPU, operation statistics, etc).
 
-MongoDB shell version v3.6.5
-connecting to: mongodb://172.18.61.250:27017/
-...
-> 
+The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+and anyone you share the URL with. MongoDB may use this information to make product
+improvements and to suggest MongoDB products and deployment options to you.
+
+To enable free monitoring, run the following command: db.enableFreeMonitoring()
+To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+
+>
 ```
 
 1. 查看、创建和删除数据库。
@@ -486,6 +537,8 @@ connecting to: mongodb://172.18.61.250:27017/
    }
    > 
    ```
+
+[mongodb insert和update及save用法以及区别](https://www.vxzsk.com/783.html)
 
 使用MongoDB可以非常方便的配置数据复制，通过冗余数据来实现数据的高可用以及灾难恢复，也可以通过数据分片来应对数据量迅速增长的需求。关于MongoDB更多的操作可以查阅[官方文档](https://mongodb-documentation.readthedocs.io/en/latest/) ，同时推荐大家阅读Kristina Chodorow写的[《MongoDB权威指南》](http://www.ituring.com.cn/book/1172)。
 
